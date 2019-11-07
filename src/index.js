@@ -2,10 +2,10 @@ const app = document.getElementById('app')
 const input = document.createElement('input')
 const button = document.createElement('button')
 const ul = document.createElement('ul')
-const li = document.createElement('li')
 const globalVar = {}
 
 const addTodo = e => {
+  const li = document.createElement('li')
   input.value = ''
   li.textContent = globalVar.inputVal
   ul.appendChild(li)

@@ -4,10 +4,18 @@ const button = document.createElement('button')
 const ul = document.createElement('ul')
 const globalVar = {}
 
+const deleteTodo = parent => child => {
+  parent.removeChild(child)
+}
+
 const addTodo = e => {
   const li = document.createElement('li')
-  input.value = ''
+  const deleteButton = document.createElement('button')
   li.textContent = globalVar.inputVal
+  deleteButton.addEventListener('click', () => deleteTodo(ul)(li))
+  deleteButton.textContent = 'Delete'
+  input.value = ''
+  li.appendChild(deleteButton)
   ul.appendChild(li)
 }
 

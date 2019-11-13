@@ -1,6 +1,6 @@
 // const fc = require('fast-check')
 import * as fc from 'fast-check'
-import { addTodo } from '../src/index'
+import { addTodo } from '../src/helpers'
 
 function testingDOM () {
   const div = document.createElement('div')

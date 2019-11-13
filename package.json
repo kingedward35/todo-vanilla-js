@@ -4,7 +4,7 @@
   "description": "Writing a vanilla javascript todo app from scratch",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,14 @@
   },
   "homepage": "https://github.com/kingedward35/todo-vanilla-js#readme",
   "devDependencies": {
-    "eslint": "^6.6.0"
+    "@testing-library/jest-dom": "^4.2.3",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.6.0",
+    "fast-check": "^1.18.1",
+    "jest": "^24.9.0"
   },
   "dependencies": {
     "standard": "^14.3.1"

@@ -2,12 +2,16 @@ const input = document.querySelector('input')
 const addButton = document.querySelector('.add')
 const todos = document.querySelector('.todos')
 const todosList = []
+
+const addListener = (element, evt, fn) => {
+  element.addEventListener(evt, fn)
+}
 const globalVar = {
   id: 0,
   value: ''
 }
 
-const deleteTodo = todo => {
+export const deleteTodo = todo => {
   const newTodosList = todosList.filter(t => t.id === todo.id)
   const newLi = document.createElement('li')
   newTodosList.forEach(todo => {
@@ -15,7 +19,7 @@ const deleteTodo = todo => {
   })
 }
 
-const updateVal = e => {
+export const updateVal = e => {
   if (e.target.value.length === 0) return
   globalVar.value = e.target.value
   if (e.keyCode === 13) {
@@ -24,7 +28,7 @@ const updateVal = e => {
   return globalVar
 }
 
-const addTodo = e => {
+export const addTodo = e => {
   if (input.value.length === 0) return
   const deleteButton = document.createElement('button')
   const li = document.createElement('li')
@@ -46,5 +50,8 @@ const addTodo = e => {
   })
 }
 
-input.addEventListener('keyup', updateVal, false)
-addButton.addEventListener('click', addTodo)
+addListener(input, 'keyup', updateVal)
+addListener(addButton, 'click', addTodo)
+
+// input.addEventListener('keyup', updateVal, false)
+// addButton.addEventListener('click', addTodo)

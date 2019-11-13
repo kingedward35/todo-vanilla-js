@@ -3,7 +3,8 @@ export const addListener = (element, evt, fn) => {
 }
 const globalVar = {
   id: 0,
-  value: ''
+  value: '',
+  completed: false
 }
 
 export const deleteTodo = (todo, todosList, todos) => {

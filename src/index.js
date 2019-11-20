@@ -52,8 +52,8 @@ const todosList = []
 //   })
 // }
 
-addListener(input, 'keyup', updateVal)
-addListener(addButton, 'click', () => addTodo(input, todosList, todos))
+addListener(input, 'keyup', (e) => updateVal(todosList, todos, e))
+addListener(addButton, 'click', (e) => addTodo(todosList, todos, input))
 
 // input.addEventListener('keyup', updateVal, false)
 // addButton.addEventListener('click', addTodo)

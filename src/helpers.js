@@ -1,6 +1,7 @@
 export const addListener = (element, evt, fn) => {
   element.addEventListener(evt, fn)
 }
+
 const globalVar = {
   id: 0,
   value: '',
@@ -15,17 +16,12 @@ export const deleteTodo = (todo, todosList, todos) => {
   })
 }
 
-export const updateVal = e => {
-  if (e.target.value.length === 0) return
-  globalVar.value = e.target.value
-  if (e.keyCode === 13) {
-    addTodo(e)
+export const addTodo = (todosList, todos, input) => {
+  if ((input.value && input.value.length === 0) || (input.target && input.target.value && input.target.value.length === 0)) {
+    return
   }
-  return globalVar
-}
-
-export const addTodo = (input, todosList, todos) => {
-  if (input.value.length === 0) return
+  console.log(input.value.length)
+  // console.log(input.target.value.length)
   const deleteButton = document.createElement('button')
   const li = document.createElement('li')
   globalVar.id += 1
@@ -38,10 +34,20 @@ export const addTodo = (input, todosList, todos) => {
   todosList.push(todo)
   todosList.forEach(todo => {
     li.textContent = todo.value
-    deleteButton.addEventListener('click', () => deleteTodo(todo))
+    deleteButton.addEventListener('click', () => deleteTodo(todo, todosList, todos))
     deleteButton.textContent = 'Delete'
     input.value = ''
     li.appendChild(deleteButton)
     todos.appendChild(li)
   })
+}
+
+export const updateVal = (todosList, todos, e) => {
+  if (e.target.value && e.target.value.length === 0) return
+  globalVar.value = e.target.value
+  if (e.keyCode === 13) {
+    e.target.value = ''
+    addTodo(todosList, todos, e)
+  }
+  return globalVar
 }

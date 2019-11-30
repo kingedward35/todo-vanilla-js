@@ -17,11 +17,12 @@ export const deleteTodo = (todo, todosList, todos) => {
 }
 
 export const addTodo = (todosList, todos, input) => {
-  if ((input.value && input.value.length === 0) || (input.target && input.target.value && input.target.value.length === 0)) {
+  if (input.target !== undefined && input.target.value !== undefined && input.target.value.length === 0) {
+    return
+  } else if (input.value !== undefined && input.value.length === 0) {
     return
   }
-  console.log(input.value.length)
-  // console.log(input.target.value.length)
+
   const deleteButton = document.createElement('button')
   const li = document.createElement('li')
   globalVar.id += 1
@@ -46,8 +47,8 @@ export const updateVal = (todosList, todos, e) => {
   if (e.target.value && e.target.value.length === 0) return
   globalVar.value = e.target.value
   if (e.keyCode === 13) {
-    e.target.value = ''
     addTodo(todosList, todos, e)
+    e.target.value = ''
   }
   return globalVar
 }

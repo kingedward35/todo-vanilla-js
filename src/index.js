@@ -1,9 +1,9 @@
-import { addListener, addTodo, deleteTodo, updateVal } from './helpers'
+import { addListener, addTodo, updateVal } from './helpers'
 
 const input = document.querySelector('input')
 const addButton = document.querySelector('.add')
 const todos = document.querySelector('.todos')
-let todosList = []
+const todosList = []
 
 input.placeholder = 'Add new task'
 

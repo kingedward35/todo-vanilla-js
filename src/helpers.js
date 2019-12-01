@@ -8,12 +8,8 @@ const globalVar = {
   completed: false
 }
 
-export const deleteTodo = (todo, todosList, todos) => {
-  const newTodosList = todosList.filter(t => t.id !== todo.id)
-  const newLi = document.createElement('li')
-  newTodosList.forEach(todo => {
-    todos.appendChild(newLi)
-  })
+export const deleteTodo = (todos, e) => {
+  todos.removeChild(e.target.parentNode)
 }
 
 const completedTodo = (todo, todosList, e) => {
@@ -50,7 +46,7 @@ export const addTodo = (todosList, todos, input) => {
   todosList.forEach(todo => {
     li.textContent = todo.value
     checkbox.addEventListener('click', (e) => completedTodo(todo, todosList, e))
-    deleteButton.addEventListener('click', () => deleteTodo(todo, todosList, todos))
+    deleteButton.addEventListener('click', (e) => deleteTodo(todos, e))
     deleteButton.textContent = 'Delete'
     input.value = ''
     li.appendChild(checkbox)

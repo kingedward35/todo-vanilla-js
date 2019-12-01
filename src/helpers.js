@@ -8,7 +8,7 @@ const globalVar = {
   completed: false
 }
 
-export const deleteTodo = (todos, e) => {
+const deleteTodo = (todos, e) => {
   todos.removeChild(e.target.parentNode)
 }
 
